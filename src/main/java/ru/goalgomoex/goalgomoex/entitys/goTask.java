@@ -1,9 +1,6 @@
 package ru.goalgomoex.goalgomoex.entitys;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "go_tasks")
@@ -13,6 +10,12 @@ public class goTask implements IEntity{
     private long ID;
     private String GUID;
     private int version;
+    private String processID;
+    @ManyToOne(targetEntity = goTaskStatus.class)
+    private goTaskStatus status;
+
+    public goTask() {
+    }
 
     @Override
     public long getID() {
@@ -38,5 +41,26 @@ public class goTask implements IEntity{
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    public String getProcessID() {
+        return processID;
+    }
+
+    public void setProcessID(String processID) {
+        this.processID = processID;
+    }
+
+    public goTaskStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(goTaskStatus status) {
+        this.status = status;
+    }
+
+    @Override
+    public void upVersion() {
+        version++;
     }
 }
