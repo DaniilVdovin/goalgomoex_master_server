@@ -2,11 +2,12 @@ package ru.goalgomoex.goalgomoex.controllers.api.v1;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.goalgomoex.goalgomoex.entitys.dto.dtoVersion;
 
-@RestController("/api/v1")
+@RestController()
 public class RestMainController {
     @GetMapping("/version")
-    public String getVersion(){
-        return "v1";
+    public dtoVersion getVersion(){
+        return new dtoVersion("v1");
     }
 }
