@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MainController {
-    @GetMapping("/")
-    public String init(){
-        return "";
+    @RequestMapping("/")
+    public String welcome(){
+        return "redirect:/api/v1/version";
     }
 }

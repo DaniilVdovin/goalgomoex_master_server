@@ -9,5 +9,4 @@ public class GoAlgoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GoAlgoApplication.class, args);
 	}
-
 }
