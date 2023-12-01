@@ -22,7 +22,7 @@
         <session-timeout>20</session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>default</welcome-file>
+        <welcome-file>index</welcome-file>
     </welcome-file-list>
 </web-app>
 
