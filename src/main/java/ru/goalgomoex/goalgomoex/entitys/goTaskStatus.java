@@ -3,8 +3,10 @@ package ru.goalgomoex.goalgomoex.entitys;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "go_task_status")
 public class goTaskStatus implements IEntity{
     @Id
     @GeneratedValue
@@ -39,5 +41,13 @@ public class goTaskStatus implements IEntity{
     @Override
     public void upVersion() {
         version++;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
     }
 }
