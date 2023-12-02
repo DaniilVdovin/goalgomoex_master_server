@@ -1,4 +1,5 @@
 root = /api/v1/
+
 Тестовый запрос для проверки сети
 - /version
     goMessage
