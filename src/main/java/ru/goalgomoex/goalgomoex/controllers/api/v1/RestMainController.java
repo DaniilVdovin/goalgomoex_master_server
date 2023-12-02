@@ -1,13 +1,11 @@
 package ru.goalgomoex.goalgomoex.controllers.api.v1;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.goalgomoex.goalgomoex.core.GoTools;
 import ru.goalgomoex.goalgomoex.core.PythonStarter;
 import ru.goalgomoex.goalgomoex.entitys.dto.dtoMessage;
+import ru.goalgomoex.goalgomoex.entitys.dto.task.calcProfit.dtoTaskOutCalcProfit;
 import ru.goalgomoex.goalgomoex.entitys.goTask;
 import ru.goalgomoex.goalgomoex.entitys.goTaskStatus;
 import ru.goalgomoex.goalgomoex.services.GoTaskService;
@@ -41,7 +39,7 @@ public class RestMainController {
     }
 
     @PostMapping("task/complied")
-    public void TaskComplied(){
+    public void TaskComplied(@RequestBody String json){
 
     }
 }
