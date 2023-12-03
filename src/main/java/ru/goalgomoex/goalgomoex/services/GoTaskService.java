@@ -6,6 +6,7 @@ import ru.goalgomoex.goalgomoex.entitys.goTask;
 import ru.goalgomoex.goalgomoex.repository.GoTaskRepository;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +39,7 @@ public class GoTaskService {
         goTask t = task.get();
         t.setProcessID(String.valueOf(pid));
         t.setStatus(1);
+        t.setStart_time(new Date());
         createOrUpdate(t);
     }
     public void taskComplied(Long ID){
@@ -50,6 +52,7 @@ public class GoTaskService {
         if(task.isEmpty()) return;
         goTask t = task.get();
         t.setStatus(status);
+        t.setEnd_time(new Date());
         createOrUpdate(t);
     }
 }

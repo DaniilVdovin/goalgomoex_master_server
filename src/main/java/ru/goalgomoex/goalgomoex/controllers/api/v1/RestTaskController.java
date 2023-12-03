@@ -26,7 +26,6 @@ public class RestTaskController {
     public goTask goTaskAdd(){
         goTask task = new goTask();
         task.setStatus(0);
-        task.setStart_time(new Date());
         task.setGUID(GoTools.GenerateGUID());
         task.setVersion(0);
         return goTaskService.createOrUpdate(task);
