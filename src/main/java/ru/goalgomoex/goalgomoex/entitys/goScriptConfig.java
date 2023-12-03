@@ -19,6 +19,7 @@ public class goScriptConfig implements IEntity {
     private long ID;
     private String GUID;
     private int version;
+    private String service;
 
     //TODO USER ID
 
@@ -283,6 +284,15 @@ public class goScriptConfig implements IEntity {
 
     public goScriptConfig setRespos_url(String respos_url) {
         this.respos_url = respos_url;
+        return this;
+    }
+
+    public String getService() {
+        return service;
+    }
+
+    public goScriptConfig setService(String service) {
+        this.service = service;
         return this;
     }
 }
