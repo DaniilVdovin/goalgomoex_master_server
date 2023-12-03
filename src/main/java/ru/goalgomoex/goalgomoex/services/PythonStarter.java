@@ -14,16 +14,13 @@ import java.util.List;
 @Service
 public class PythonStarter {
     @Autowired private GoTaskService goTaskService;
-    public String Start(long task_id,String file, goScriptConfig config){
-        return Start(task_id,file,config.toParams());
-    }
-    public String Start(long task_id,String file, String... params){
-        //if(goTaskService.getTask(task_id).getStatus() != 0) return "CANT";
+    public String Start(long task_id,goScriptConfig config){
+        if(goTaskService.getTask(task_id).getStatus() != 0) return "CANT";
         ArrayList<String> UNIX = new ArrayList<>();
         UNIX.add("/bin/sh");
         UNIX.add("/var/opt/goalgomoex/starter.sh");
-        UNIX.add(file);
-        UNIX.addAll(List.of(params));
+        UNIX.add(config.getService());
+        UNIX.add(config.toString());
         try {
             Process process = Runtime.getRuntime().exec(String.join(" ",UNIX));
             System.out.println(String.join(" ",UNIX));

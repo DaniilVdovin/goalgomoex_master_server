@@ -28,8 +28,8 @@ public class goScriptConfig implements IEntity {
     private String neural_path;
     private String ticker;
     private String timeframe;
-    private Date start_date;
-    private Date end_date;
+    private String start_date;
+    private String end_date;
     private int count_points;
     private int extr_bar_count;
     private float max_unmark;
@@ -161,20 +161,20 @@ public class goScriptConfig implements IEntity {
         return this;
     }
 
-    public Date getStart_date() {
+    public String getStart_date() {
         return start_date;
     }
 
-    public goScriptConfig setStart_date(Date start_date) {
+    public goScriptConfig setStart_date(String start_date) {
         this.start_date = start_date;
         return this;
     }
 
-    public Date getEnd_date() {
+    public String getEnd_date() {
         return end_date;
     }
 
-    public goScriptConfig setEnd_date(Date end_date) {
+    public goScriptConfig setEnd_date(String end_date) {
         this.end_date = end_date;
         return this;
     }
