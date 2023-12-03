@@ -23,7 +23,7 @@ public class RestScriptConfController {
         return goConfService.Get(id);
     }
     @PostMapping("/add")
-    public dtoMessage addConf(@RequestBody goScriptConfig config){
+    public dtoMessage add(@RequestBody goScriptConfig config){
         goConfService.createOrUpdate(
                 config
                         .setVersion(0)
