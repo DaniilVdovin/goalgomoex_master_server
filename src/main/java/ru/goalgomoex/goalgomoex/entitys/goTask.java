@@ -2,6 +2,8 @@ package ru.goalgomoex.goalgomoex.entitys;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "go_tasks")
 public class goTask implements IEntity{
@@ -11,8 +13,17 @@ public class goTask implements IEntity{
     private String GUID;
     private int version;
     private String processID;
-    @ManyToOne(targetEntity = goTaskStatus.class)
-    private goTaskStatus status;
+    /* *
+    * STATUS
+    * 0 - В очереди
+    * 1 - В работе
+    * 2 - Завершен
+    * 3 - С ошибкой
+    * */
+    private int status;
+    private Date start_time;
+    private Date end_time;
+    private String json;
 
     public goTask() {
     }
@@ -51,16 +62,40 @@ public class goTask implements IEntity{
         this.processID = processID;
     }
 
-    public goTaskStatus getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(goTaskStatus status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
     @Override
     public void upVersion() {
         version++;
+    }
+
+    public Date getStart_time() {
+        return start_time;
+    }
+
+    public void setStart_time(Date start_time) {
+        this.start_time = start_time;
+    }
+
+    public Date getEnd_time() {
+        return end_time;
+    }
+
+    public void setEnd_time(Date end_time) {
+        this.end_time = end_time;
+    }
+
+    public String getJson() {
+        return json;
+    }
+
+    public void setJson(String json) {
+        this.json = json;
     }
 }

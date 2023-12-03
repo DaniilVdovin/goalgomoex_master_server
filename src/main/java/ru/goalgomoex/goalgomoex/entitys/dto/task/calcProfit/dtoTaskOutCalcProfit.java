@@ -62,6 +62,7 @@ public class dtoTaskOutCalcProfit extends dtoTaskOut {
         this.dyn_ideal_trading = dyn_ideal_trading;
         this.dyn_neural_trading = dyn_neural_trading;
     }
+
     public dtoTaskOutCalcProfit(long task_id, dtoSignal singals_example, dtoValueDV<Float> test_accuracy_score, dtoValueDV<Float> test_roc_auc_score, dtoValueDV<Float> test_precision_score, dtoValueDV<Float> test_recall_score, dtoValueDV<Float> test_f1_score, dtoValueDV<Float> test_log_loss, dtoValueDV<Float> data_std, dtoValueDV<Float> max_risk, dtoValueDV<Float> buy_hold_std, dtoValueDV<Float> buy_hold_sharp, dtoValueDV<Float> ideal_strategy_profit_without_shift, dtoValueDV<Float> ideal_strategy_profit_with_shift, dtoValueDV<Float> ideal_strategy_std_without_shift, dtoValueDV<Float> ideal_strategy_std_with_shift, dtoValueDV<Float> ideal_strategy_sharp_without_shift, dtoValueDV<Float> ideal_strategy_sharp_with_shift, dtoValueDV<Float> ideal_strategy_trade_count_without_shift, dtoValueDV<Float> neural_strategy_profit_without_shift, dtoValueDV<Float> neural_strategy_profit_with_shift, dtoValueDV<Float> neural_strategy_std_with_shift, dtoValueDV<Float> neural_strategy_sharp_without_shift, dtoValueDV<Float> neural_strategy_sharp_with_shift, dtoValueDV<Float> neural_strategy_trade_count_without_shift, dtoValueDV<Float> neural_strategy_trade_count_with_shift, dtoValueDV<dtoData[]> dyn_ideal_trading, dtoValueDV<dtoData[]> dyn_neural_trading) {
         super(task_id);
         this.singals_example = singals_example;
@@ -92,8 +93,10 @@ public class dtoTaskOutCalcProfit extends dtoTaskOut {
         this.dyn_ideal_trading = dyn_ideal_trading;
         this.dyn_neural_trading = dyn_neural_trading;
     }
+
     public dtoTaskOutCalcProfit() {
     }
+
     public dtoTaskOutCalcProfit(long task_id) {
         super(task_id);
     }
