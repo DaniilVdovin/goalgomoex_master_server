@@ -19,7 +19,7 @@ public class RestScriptConfController {
         return goConfService.listForService(service);
     }
     @GetMapping("/get")
-    public goScriptConfig list(@RequestParam("id") long id){
+    public goScriptConfig get(@RequestParam("id") long id){
         return goConfService.Get(id);
     }
     @PostMapping("/add")
