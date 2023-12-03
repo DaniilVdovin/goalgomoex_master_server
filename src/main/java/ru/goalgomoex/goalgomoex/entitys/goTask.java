@@ -13,6 +13,8 @@ public class goTask implements IEntity{
     private String GUID;
     private int version;
     private String processID;
+    //TODO USER ID
+
     /* *
     * STATUS
     * 0 - В очереди

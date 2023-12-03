@@ -1,5 +1,6 @@
 package ru.goalgomoex.goalgomoex.entitys;
 
+//TODO REMOVE
 public class goTaskStatus implements IEntity{
 
     private long ID;
