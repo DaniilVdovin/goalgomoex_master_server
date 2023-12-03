@@ -1,14 +1,16 @@
 package ru.goalgomoex.goalgomoex.controllers.api.v1;
 
 
-import com.google.gson.Gson;
+import com.google.gson.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import ru.goalgomoex.goalgomoex.core.GoTools;
 import ru.goalgomoex.goalgomoex.entitys.dto.dtoMessage;
 import ru.goalgomoex.goalgomoex.entitys.dto.task.dtoTaskOut;
 import ru.goalgomoex.goalgomoex.entitys.goTask;
 import ru.goalgomoex.goalgomoex.services.GoTaskService;
+import ru.goalgomoex.goalgomoex.services.IOTaskJsonService;
 
 import java.util.Date;
 import java.util.List;
@@ -18,6 +20,8 @@ import java.util.List;
 public class RestTaskController {
     @Autowired
     private GoTaskService goTaskService;
+    @Autowired
+    private IOTaskJsonService ioTaskJsonService;
     @GetMapping("/add")
     public goTask goTaskAdd(){
         goTask task = new goTask();
@@ -36,12 +40,17 @@ public class RestTaskController {
         goTaskService.taskCompliedWithError(task_id);
         return new dtoMessage("INFO","Task %d Close".formatted(task_id));
     }
+    @GetMapping(path = "/result",produces= MediaType.APPLICATION_JSON_VALUE)
+    public String TaskResult(@RequestParam("task_id") long task_id){
+        return ioTaskJsonService.Read(task_id);
+    }
     @PostMapping("/complied")
     public dtoMessage TaskComplied(@RequestBody String taskAsJson){
         Gson gson = new Gson();
         dtoTaskOut task = gson.fromJson(taskAsJson,dtoTaskOut.class);
         goTaskService.taskComplied(task.getTask_id());
-
+        if(ioTaskJsonService.Write(task.getTask_id(),taskAsJson))
         return new dtoMessage("INFO","Task %d Complied".formatted(task.getTask_id()));
+        else return new dtoMessage("INFO","Task %d Complied but cannot save result".formatted(task.getTask_id()));
     }
 }

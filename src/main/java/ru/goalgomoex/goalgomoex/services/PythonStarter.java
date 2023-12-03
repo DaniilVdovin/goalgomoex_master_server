@@ -15,14 +15,14 @@ public class PythonStarter {
         ArrayList<String> UNIX = new ArrayList<>();
         UNIX.add("/bin/sh");
         UNIX.add("-c");
-        UNIX.add("cd /Users/daniilvdovin/Documents/goalgomoex/src/main/resources/static/scripts/");
+        UNIX.add("cd scripts/");
         UNIX.add("\n");
         UNIX.add("/bin/sh");
         UNIX.add("-c");
         UNIX.add("python3");
         UNIX.add(file);
-        UNIX.add("\n");
         UNIX.addAll(List.of(params));
+        UNIX.add("\n");
         try {
             Process process = Runtime.getRuntime().exec(UNIX.toArray(new String[0]));
             goTaskService.taskInProgress(task_id,process.pid());
