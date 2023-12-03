@@ -2,7 +2,7 @@ package ru.goalgomoex.goalgomoex.services.auth;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import ru.goalgomoex.goalgomoex.entitys.data.UserAuthData;
+import ru.goalgomoex.goalgomoex.entitys.auth.UserAuthData;
 import ru.goalgomoex.goalgomoex.entitys.dto.auth.UserAuthDTO;
 import ru.goalgomoex.goalgomoex.entitys.dto.dtoMessage;
 import ru.goalgomoex.goalgomoex.repository.auth.UserAuthRepository;

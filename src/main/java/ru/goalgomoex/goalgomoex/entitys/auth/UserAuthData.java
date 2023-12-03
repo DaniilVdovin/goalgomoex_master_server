@@ -1,4 +1,4 @@
-package ru.goalgomoex.goalgomoex.entitys.data;
+package ru.goalgomoex.goalgomoex.entitys.auth;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
