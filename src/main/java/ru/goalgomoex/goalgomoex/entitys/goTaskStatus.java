@@ -1,15 +1,7 @@
 package ru.goalgomoex.goalgomoex.entitys;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name = "go_task_status")
 public class goTaskStatus implements IEntity{
-    @Id
-    @GeneratedValue
+
     private long ID;
     private int version;
     private String Name;

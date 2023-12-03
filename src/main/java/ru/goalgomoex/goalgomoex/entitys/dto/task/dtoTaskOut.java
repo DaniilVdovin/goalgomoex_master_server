@@ -2,8 +2,7 @@ package ru.goalgomoex.goalgomoex.entitys.dto.task;
 
 public class dtoTaskOut implements IDTOTaskOut{
     private long task_id;
-    public dtoTaskOut() {
-    }
+    public dtoTaskOut() {}
     public dtoTaskOut(long task_id) {
         this.task_id = task_id;
     }

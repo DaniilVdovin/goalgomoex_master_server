@@ -13,8 +13,14 @@ public class goTask implements IEntity{
     private String GUID;
     private int version;
     private String processID;
-    @ManyToOne(targetEntity = goTaskStatus.class)
-    private goTaskStatus status;
+    /* *
+    * STATUS
+    * 0 - В очереди
+    * 1 - В работе
+    * 2 - Завершен
+    * 3 - С ошибкой
+    * */
+    private int status;
     private Date start_time;
     private Date end_time;
     private String json;
@@ -56,11 +62,11 @@ public class goTask implements IEntity{
         this.processID = processID;
     }
 
-    public goTaskStatus getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(goTaskStatus status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
