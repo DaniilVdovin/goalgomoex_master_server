@@ -17,6 +17,10 @@ public class GoTaskService {
     public List<goTask> taskInProgressList() {return goTaskRepository.findByStatus(1);}
     public List<goTask> taskDoneList() {return goTaskRepository.findByStatus(2);}
     public List<goTask> taskDoneWithErrorList() {return goTaskRepository.findByStatus(3);}
+    public goTask getTask(long id){
+        return goTaskRepository.findById(id).orElse(null);
+    }
+
     public List<goTask> taskDoneAllList() {
         ArrayList<goTask> temp = new ArrayList<>();
         temp.addAll(goTaskRepository.findByStatus(2));
@@ -37,7 +41,8 @@ public class GoTaskService {
         createOrUpdate(t);
     }
     public void taskComplied(Long ID){
-        sysTaskComplied(ID,2);}
+        sysTaskComplied(ID,2);
+    }
     public void taskCompliedWithError(Long ID){
         sysTaskComplied(ID,3);}
     private void sysTaskComplied(Long ID, int status){

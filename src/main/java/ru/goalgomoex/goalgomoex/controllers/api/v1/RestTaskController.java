@@ -27,6 +27,15 @@ public class RestTaskController {
         task.setVersion(0);
         return goTaskService.createOrUpdate(task);
     }
+    @GetMapping("/get")
+    public goTask getGoTask(@RequestParam("task_id") long task_id){
+        return goTaskService.getTask(task_id);
+    }
+    @GetMapping("/close")
+    public dtoMessage TaskClose(@RequestParam("task_id") long task_id){
+        goTaskService.taskCompliedWithError(task_id);
+        return new dtoMessage("INFO","Task %d Close".formatted(task_id));
+    }
     @PostMapping("/complied")
     public dtoMessage TaskComplied(@RequestBody String taskAsJson){
         Gson gson = new Gson();
