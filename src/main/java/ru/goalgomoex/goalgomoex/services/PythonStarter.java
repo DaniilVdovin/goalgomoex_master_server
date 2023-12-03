@@ -2,6 +2,7 @@ package ru.goalgomoex.goalgomoex.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.goalgomoex.goalgomoex.entitys.goScriptConfig;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -13,6 +14,9 @@ import java.util.List;
 @Service
 public class PythonStarter {
     @Autowired private GoTaskService goTaskService;
+    public String Start(long task_id,String file, goScriptConfig config){
+        return Start(task_id,file,config.toParams());
+    }
     public String Start(long task_id,String file, String... params){
         //if(goTaskService.getTask(task_id).getStatus() != 0) return "CANT";
         ArrayList<String> UNIX = new ArrayList<>();

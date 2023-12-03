@@ -2,8 +2,11 @@ package ru.goalgomoex.goalgomoex.controllers.api.v1;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import ru.goalgomoex.goalgomoex.entitys.goScriptConfig;
 import ru.goalgomoex.goalgomoex.services.PythonStarter;
 import ru.goalgomoex.goalgomoex.entitys.dto.dtoMessage;
+
+import java.util.Date;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -19,19 +22,18 @@ public class RestMainController{
     }
     @GetMapping("/test/start")
     public dtoMessage start(@RequestParam("task_id") long task_id){
-       String msg = pythonStarter.Start(task_id,"data_markup.py",
-                "--cmd_config",
-                "--task_id "+task_id,
-                "--scaler_path app/scalers/"+task_id+"/",
-                "--neural_path app/neurals/"+task_id+"/",
-                "--ticker SBER",
-                "--timeframe 1D",
-                "--start_date 2023-11-01",
-                "--end_date 2023-11-26",
-                "--count_points 6",
-                "--extr_bar_count 10",
-                "--respos_url localhost:8080"
-                );
+        goScriptConfig config = new goScriptConfig()
+                .setTask_id(task_id)
+                .setScaler_path("app/scalers/"+task_id+"/")
+                .setNeural_path("app/neurals/"+task_id+"/")
+                .setTicker("SBER")
+                .setTimeframe("1D")
+                .setStart_date(new Date("2023-11-01"))
+                .setEnd_date(new Date("2023-11-01"))
+                .setCount_points(6)
+                .setExtr_bar_count(10)
+                .setRespos_url("localhost:8080");
+        String msg = pythonStarter.Start(task_id,"data_markup.py",config);
         return new dtoMessage("INFO",msg);
     }
 }
