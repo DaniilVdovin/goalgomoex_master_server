@@ -44,9 +44,9 @@ public class RestTaskController {
         return new dtoMessage("INFO","Task %d Close".formatted(task_id));
     }
     @GetMapping("/setConfig")
-    public dtoMessage start(@RequestParam("task_id") long task_id,@RequestParam("task_id") long cong_id){
+    public dtoMessage start(@RequestParam("task_id") long task_id,@RequestParam("conf_id") long conf_id){
         goTask task = goTaskService.getTask(task_id);
-        goScriptConfig config = goConfService.Get(cong_id);
+        goScriptConfig config = goConfService.Get(conf_id);
         config.setTask_id(task_id);
         task.setConfig(config);
         goConfService.createOrUpdate(config);
