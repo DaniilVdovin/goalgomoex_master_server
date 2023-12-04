@@ -4,6 +4,7 @@
 Мастер сервер для работы с данными полученными из [MoexAlgo](https://github.com/moexalgo/moexalgo/tree/main)
 
 [Исходные коды микросервисов пайплайна](https://github.com/powerlife000/moex_hackaton/)
+[Репозиторий Web UI](https://github.com/Innosan/go_algo_web)
 
 Перечень скриптов микросервисов:   
 - data_markup.py		Оценка потенциальной доходности торговли и инвестиций (тестирование гипотез разметки данных).
