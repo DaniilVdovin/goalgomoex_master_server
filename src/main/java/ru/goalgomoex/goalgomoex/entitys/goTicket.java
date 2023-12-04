@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "go_tickets")
 public class goTicket {
@@ -11,32 +13,32 @@ public class goTicket {
     private String SECID;
     private String BOARDID;
     private String SHORTNAME;
-    private String PREVPRICE;
-    private String LOTSIZE;
-    private String FACEVALUE;
+    private double PREVPRICE;
+    private int LOTSIZE;
+    private double FACEVALUE;
     private String STATUS;
     private String BOARDNAME;
-    private String DECIMALS;
+    private int DECIMALS;
     private String SECNAME;
     private String REMARKS;
     private String MARKETCODE;
     private String INSTRID;
     private String SECTORID;
-    private String MINSTEP;
-    private String PREVWAPRICE;
+    private double MINSTEP;
+    private double PREVWAPRICE;
     private String FACEUNIT;
-    private String PREVDATE;
-    private String ISSUESIZE;
+    private Date PREVDATE;
+    private int ISSUESIZE;
     private String ISIN;
     private String LATNAME;
     private String REGNUMBER;
-    private String PREVLEGALCLOSEPRICE;
+    private double PREVLEGALCLOSEPRICE;
     private String CURRENCYID;
     private String SECTYPE;
-    private String LISTLEVEL;
-    private String SETTLEDATE;
+    private int LISTLEVEL;
+    private Date SETTLEDATE;
 
-    public goTicket(String SECID, String BOARDID, String SHORTNAME, String PREVPRICE, String LOTSIZE, String FACEVALUE, String STATUS, String BOARDNAME, String DECIMALS, String SECNAME, String REMARKS, String MARKETCODE, String INSTRID, String SECTORID, String MINSTEP, String PREVWAPRICE, String FACEUNIT, String PREVDATE, String ISSUESIZE, String ISIN, String LATNAME, String REGNUMBER, String PREVLEGALCLOSEPRICE, String CURRENCYID, String SECTYPE, String LISTLEVEL, String SETTLEDATE) {
+    public goTicket(String SECID, String BOARDID, String SHORTNAME, double PREVPRICE, int LOTSIZE, double FACEVALUE, String STATUS, String BOARDNAME, int DECIMALS, String SECNAME, String REMARKS, String MARKETCODE, String INSTRID, String SECTORID, double MINSTEP, double PREVWAPRICE, String FACEUNIT, Date PREVDATE, int ISSUESIZE, String ISIN, String LATNAME, String REGNUMBER, double PREVLEGALCLOSEPRICE, String CURRENCYID, String SECTYPE, int LISTLEVEL, Date SETTLEDATE) {
         this.SECID = SECID;
         this.BOARDID = BOARDID;
         this.SHORTNAME = SHORTNAME;
@@ -90,27 +92,27 @@ public class goTicket {
         this.SHORTNAME = SHORTNAME;
     }
 
-    public String getPREVPRICE() {
+    public double getPREVPRICE() {
         return PREVPRICE;
     }
 
-    public void setPREVPRICE(String PREVPRICE) {
+    public void setPREVPRICE(double PREVPRICE) {
         this.PREVPRICE = PREVPRICE;
     }
 
-    public String getLOTSIZE() {
+    public int getLOTSIZE() {
         return LOTSIZE;
     }
 
-    public void setLOTSIZE(String LOTSIZE) {
+    public void setLOTSIZE(int LOTSIZE) {
         this.LOTSIZE = LOTSIZE;
     }
 
-    public String getFACEVALUE() {
+    public double getFACEVALUE() {
         return FACEVALUE;
     }
 
-    public void setFACEVALUE(String FACEVALUE) {
+    public void setFACEVALUE(double FACEVALUE) {
         this.FACEVALUE = FACEVALUE;
     }
 
@@ -130,11 +132,11 @@ public class goTicket {
         this.BOARDNAME = BOARDNAME;
     }
 
-    public String getDECIMALS() {
+    public int getDECIMALS() {
         return DECIMALS;
     }
 
-    public void setDECIMALS(String DECIMALS) {
+    public void setDECIMALS(int DECIMALS) {
         this.DECIMALS = DECIMALS;
     }
 
@@ -178,19 +180,19 @@ public class goTicket {
         this.SECTORID = SECTORID;
     }
 
-    public String getMINSTEP() {
+    public double getMINSTEP() {
         return MINSTEP;
     }
 
-    public void setMINSTEP(String MINSTEP) {
+    public void setMINSTEP(double MINSTEP) {
         this.MINSTEP = MINSTEP;
     }
 
-    public String getPREVWAPRICE() {
+    public double getPREVWAPRICE() {
         return PREVWAPRICE;
     }
 
-    public void setPREVWAPRICE(String PREVWAPRICE) {
+    public void setPREVWAPRICE(double PREVWAPRICE) {
         this.PREVWAPRICE = PREVWAPRICE;
     }
 
@@ -202,19 +204,19 @@ public class goTicket {
         this.FACEUNIT = FACEUNIT;
     }
 
-    public String getPREVDATE() {
+    public Date getPREVDATE() {
         return PREVDATE;
     }
 
-    public void setPREVDATE(String PREVDATE) {
+    public void setPREVDATE(Date PREVDATE) {
         this.PREVDATE = PREVDATE;
     }
 
-    public String getISSUESIZE() {
+    public int getISSUESIZE() {
         return ISSUESIZE;
     }
 
-    public void setISSUESIZE(String ISSUESIZE) {
+    public void setISSUESIZE(int ISSUESIZE) {
         this.ISSUESIZE = ISSUESIZE;
     }
 
@@ -242,11 +244,11 @@ public class goTicket {
         this.REGNUMBER = REGNUMBER;
     }
 
-    public String getPREVLEGALCLOSEPRICE() {
+    public double getPREVLEGALCLOSEPRICE() {
         return PREVLEGALCLOSEPRICE;
     }
 
-    public void setPREVLEGALCLOSEPRICE(String PREVLEGALCLOSEPRICE) {
+    public void setPREVLEGALCLOSEPRICE(double PREVLEGALCLOSEPRICE) {
         this.PREVLEGALCLOSEPRICE = PREVLEGALCLOSEPRICE;
     }
 
@@ -266,19 +268,19 @@ public class goTicket {
         this.SECTYPE = SECTYPE;
     }
 
-    public String getLISTLEVEL() {
+    public int getLISTLEVEL() {
         return LISTLEVEL;
     }
 
-    public void setLISTLEVEL(String LISTLEVEL) {
+    public void setLISTLEVEL(int LISTLEVEL) {
         this.LISTLEVEL = LISTLEVEL;
     }
 
-    public String getSETTLEDATE() {
+    public Date getSETTLEDATE() {
         return SETTLEDATE;
     }
 
-    public void setSETTLEDATE(String SETTLEDATE) {
+    public void setSETTLEDATE(Date SETTLEDATE) {
         this.SETTLEDATE = SETTLEDATE;
     }
 }
