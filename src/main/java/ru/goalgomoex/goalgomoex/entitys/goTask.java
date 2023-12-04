@@ -23,9 +23,12 @@ public class goTask implements IEntity{
     * 3 - С ошибкой
     * */
     private int status;
+
+    @ManyToOne(targetEntity = goScriptConfig.class)
+    private goScriptConfig config;
+
     private Date start_time;
     private Date end_time;
-    private String json;
 
     public goTask() {
     }
@@ -93,11 +96,11 @@ public class goTask implements IEntity{
         this.end_time = end_time;
     }
 
-    public String getJson() {
-        return json;
+    public goScriptConfig getConfig() {
+        return config;
     }
 
-    public void setJson(String json) {
-        this.json = json;
+    public void setConfig(goScriptConfig config) {
+        this.config = config;
     }
 }

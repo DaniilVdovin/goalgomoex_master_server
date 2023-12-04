@@ -1,4 +1,4 @@
-package ru.goalgomoex.goalgomoex.entitys.dto.task;
+package ru.goalgomoex.goalgomoex.entitys.dto;
 
 import ru.goalgomoex.goalgomoex.entitys.dto.IDTOEntity;
 

@@ -1,7 +1,7 @@
 package ru.goalgomoex.goalgomoex.entitys.dto.task.calcProfit;
 
 import ru.goalgomoex.goalgomoex.entitys.dto.IDTOEntity;
-import ru.goalgomoex.goalgomoex.entitys.dto.task.dtoValueDV;
+import ru.goalgomoex.goalgomoex.entitys.dto.dtoValueDV;
 
 public class dtoSignal implements IDTOEntity {
     private dtoValueDV<float[]> markup_signals;

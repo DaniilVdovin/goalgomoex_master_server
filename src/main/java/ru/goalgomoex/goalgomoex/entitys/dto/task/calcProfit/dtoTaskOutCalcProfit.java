@@ -2,7 +2,7 @@ package ru.goalgomoex.goalgomoex.entitys.dto.task.calcProfit;
 
 import ru.goalgomoex.goalgomoex.entitys.dto.task.dtoData;
 import ru.goalgomoex.goalgomoex.entitys.dto.task.dtoTaskOut;
-import ru.goalgomoex.goalgomoex.entitys.dto.task.dtoValueDV;
+import ru.goalgomoex.goalgomoex.entitys.dto.dtoValueDV;
 
 public class dtoTaskOutCalcProfit extends dtoTaskOut {
     private dtoSignal singals_example;

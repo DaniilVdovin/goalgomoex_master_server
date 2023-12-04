@@ -13,9 +13,7 @@ import java.util.List;
 
 @Service
 public class PythonStarter {
-    @Autowired private GoTaskService goTaskService;
-    public String Start(long task_id,goScriptConfig config){
-        if(goTaskService.getTask(task_id).getStatus() != 0) return "CANT";
+    public boolean Start(long task_id,goScriptConfig config){
         ArrayList<String> UNIX = new ArrayList<>();
         UNIX.add("/bin/sh");
         UNIX.add("/var/opt/goalgomoex/starter.sh");
@@ -24,11 +22,10 @@ public class PythonStarter {
         try {
             Process process = Runtime.getRuntime().exec(String.join(" ",UNIX));
             System.out.println(String.join(" ",UNIX));
-            goTaskService.taskInProgress(task_id,process.pid());
-            return "Start ("+process.pid()+") : "+String.join(" ",UNIX);
+            return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return e.getMessage();
+            return false;
         }
     }
 }

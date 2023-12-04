@@ -8,17 +8,18 @@ import java.util.Date;
 
 @Entity
 @Table(name = "go_tickets")
-public class goTicket {
+public class goTicket  implements IEntity
+{
     @Id
     private String SECID;
     private String BOARDID;
     private String SHORTNAME;
     private double PREVPRICE;
-    private int LOTSIZE;
+    private double LOTSIZE;
     private double FACEVALUE;
     private String STATUS;
     private String BOARDNAME;
-    private int DECIMALS;
+    private double DECIMALS;
     private String SECNAME;
     private String REMARKS;
     private String MARKETCODE;
@@ -27,18 +28,20 @@ public class goTicket {
     private double MINSTEP;
     private double PREVWAPRICE;
     private String FACEUNIT;
-    private Date PREVDATE;
-    private int ISSUESIZE;
+    private String PREVDATE;
+    private double ISSUESIZE;
     private String ISIN;
     private String LATNAME;
     private String REGNUMBER;
     private double PREVLEGALCLOSEPRICE;
     private String CURRENCYID;
     private String SECTYPE;
-    private int LISTLEVEL;
-    private Date SETTLEDATE;
+    private double LISTLEVEL;
+    private String SETTLEDATE;
 
-    public goTicket(String SECID, String BOARDID, String SHORTNAME, double PREVPRICE, int LOTSIZE, double FACEVALUE, String STATUS, String BOARDNAME, int DECIMALS, String SECNAME, String REMARKS, String MARKETCODE, String INSTRID, String SECTORID, double MINSTEP, double PREVWAPRICE, String FACEUNIT, Date PREVDATE, int ISSUESIZE, String ISIN, String LATNAME, String REGNUMBER, double PREVLEGALCLOSEPRICE, String CURRENCYID, String SECTYPE, int LISTLEVEL, Date SETTLEDATE) {
+    public goTicket(){}
+
+    public goTicket(String SECID, String BOARDID, String SHORTNAME, double PREVPRICE, double LOTSIZE, double FACEVALUE, String STATUS, String BOARDNAME, double DECIMALS, String SECNAME, String REMARKS, String MARKETCODE, String INSTRID, String SECTORID, double MINSTEP, double PREVWAPRICE, String FACEUNIT, String PREVDATE, double ISSUESIZE, String ISIN, String LATNAME, String REGNUMBER, double PREVLEGALCLOSEPRICE, String CURRENCYID, String SECTYPE, double LISTLEVEL, String SETTLEDATE) {
         this.SECID = SECID;
         this.BOARDID = BOARDID;
         this.SHORTNAME = SHORTNAME;
@@ -100,11 +103,11 @@ public class goTicket {
         this.PREVPRICE = PREVPRICE;
     }
 
-    public int getLOTSIZE() {
+    public double getLOTSIZE() {
         return LOTSIZE;
     }
 
-    public void setLOTSIZE(int LOTSIZE) {
+    public void setLOTSIZE(double LOTSIZE) {
         this.LOTSIZE = LOTSIZE;
     }
 
@@ -132,11 +135,11 @@ public class goTicket {
         this.BOARDNAME = BOARDNAME;
     }
 
-    public int getDECIMALS() {
+    public double getDECIMALS() {
         return DECIMALS;
     }
 
-    public void setDECIMALS(int DECIMALS) {
+    public void setDECIMALS(double DECIMALS) {
         this.DECIMALS = DECIMALS;
     }
 
@@ -204,19 +207,19 @@ public class goTicket {
         this.FACEUNIT = FACEUNIT;
     }
 
-    public Date getPREVDATE() {
+    public String getPREVDATE() {
         return PREVDATE;
     }
 
-    public void setPREVDATE(Date PREVDATE) {
+    public void setPREVDATE(String PREVDATE) {
         this.PREVDATE = PREVDATE;
     }
 
-    public int getISSUESIZE() {
+    public double getISSUESIZE() {
         return ISSUESIZE;
     }
 
-    public void setISSUESIZE(int ISSUESIZE) {
+    public void setISSUESIZE(double ISSUESIZE) {
         this.ISSUESIZE = ISSUESIZE;
     }
 
@@ -268,7 +271,7 @@ public class goTicket {
         this.SECTYPE = SECTYPE;
     }
 
-    public int getLISTLEVEL() {
+    public double getLISTLEVEL() {
         return LISTLEVEL;
     }
 
@@ -276,11 +279,31 @@ public class goTicket {
         this.LISTLEVEL = LISTLEVEL;
     }
 
-    public Date getSETTLEDATE() {
+    public String getSETTLEDATE() {
         return SETTLEDATE;
     }
 
-    public void setSETTLEDATE(Date SETTLEDATE) {
+    public void setSETTLEDATE(String SETTLEDATE) {
         this.SETTLEDATE = SETTLEDATE;
+    }
+
+    @Override
+    public long getID() {
+        return 0L;
+    }
+
+    @Override
+    public String getGUID() {
+        return SECID;
+    }
+
+    @Override
+    public int getVersion() {
+        return 0;
+    }
+
+    @Override
+    public void upVersion() {
+        return;
     }
 }
