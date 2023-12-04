@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import ru.goalgomoex.goalgomoex.core.GoTools;
 import ru.goalgomoex.goalgomoex.entitys.IEntity;
 
 import java.lang.reflect.Field;
@@ -44,6 +45,8 @@ public class goScriptConfig implements IEntity {
     private String respos_url;
 
     public goScriptConfig() {
+        setGUID(GoTools.GenerateGUID());
+        setVersion(0);
     }
 
     public String[] toParams() {
