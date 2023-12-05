@@ -2,7 +2,10 @@ package ru.goalgomoex.goalgomoex.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.goalgomoex.goalgomoex.entitys.goScriptConfig;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,26 +13,19 @@ import java.util.List;
 
 @Service
 public class PythonStarter {
-    @Autowired private GoTaskService goTaskService;
-    public String Start(long task_id,String file, String... params){
+    public boolean Start(long task_id,goScriptConfig config){
         ArrayList<String> UNIX = new ArrayList<>();
         UNIX.add("/bin/sh");
-        UNIX.add("-c");
-        UNIX.add("cd scripts/");
-        UNIX.add("\n");
-        UNIX.add("/bin/sh");
-        UNIX.add("-c");
-        UNIX.add("python3");
-        UNIX.add(file);
-        UNIX.addAll(List.of(params));
-        UNIX.add("\n");
+        UNIX.add("/var/opt/goalgomoex/starter.sh");
+        UNIX.add(config.getService());
+        UNIX.add(config.toString());
         try {
-            Process process = Runtime.getRuntime().exec(UNIX.toArray(new String[0]));
-            goTaskService.taskInProgress(task_id,process.pid());
-            return "";
+            Process process = Runtime.getRuntime().exec(String.join(" ",UNIX));
+            System.out.println(String.join(" ",UNIX));
+            return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return null;
+            return false;
         }
     }
 }

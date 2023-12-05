@@ -1,17 +1,20 @@
 package ru.goalgomoex.goalgomoex.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import ru.goalgomoex.goalgomoex.entitys.goTask;
 import ru.goalgomoex.goalgomoex.repository.GoTaskRepository;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class GoTaskService {
     @Autowired private GoTaskRepository goTaskRepository;
+    @Autowired private PythonStarter pythonStarter;
     public List<goTask> taskList() {return goTaskRepository.findAll();}
     public List<goTask> taskWaitList() {return goTaskRepository.findByStatus(0);}
     public List<goTask> taskInProgressList() {return goTaskRepository.findByStatus(1);}
@@ -38,6 +41,7 @@ public class GoTaskService {
         goTask t = task.get();
         t.setProcessID(String.valueOf(pid));
         t.setStatus(1);
+        t.setStart_time(new Date());
         createOrUpdate(t);
     }
     public void taskComplied(Long ID){
@@ -50,6 +54,19 @@ public class GoTaskService {
         if(task.isEmpty()) return;
         goTask t = task.get();
         t.setStatus(status);
+        t.setEnd_time(new Date());
         createOrUpdate(t);
     }
+    @Scheduled(fixedRate = 10000)
+    private void TaskManager(){
+        if(!goTaskRepository.findByStatus(1).isEmpty()) return;
+        if(goTaskRepository.findByStatus(0).isEmpty()) return;
+        for (goTask task:goTaskRepository.findByStatus(0)) {
+            if(task.getConfig() == null) continue;
+            boolean rs = pythonStarter.Start(task.getID(),task.getConfig());
+
+            break;
+        }
+    }
+
 }
