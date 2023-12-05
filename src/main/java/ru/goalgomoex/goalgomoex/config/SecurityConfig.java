@@ -32,7 +32,6 @@ public class SecurityConfig {
                     config.setAllowedHeaders(Collections.singletonList("*"));
                     config.setAllowedMethods(Collections.singletonList("*"));
                     config.addAllowedOrigin("*");
-                    config.setAllowCredentials(true);
                     return config;
                 }))
                 .authorizeHttpRequests(auth -> auth
