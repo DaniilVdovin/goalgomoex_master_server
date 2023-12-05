@@ -7,6 +7,8 @@
 
 [Репозиторий Web UI](https://github.com/Innosan/go_algo_web)
 
+[Исходные коды платфомы на python для торговли на Московской бирже (MOEX)](https://github.com/powerlife000/moex_trading_system)
+
 Перечень скриптов микросервисов:   
 - data_markup.py		Оценка потенциальной доходности торговли и инвестиций (тестирование гипотез разметки данных).
 - data_gen.py			Генерация датасетов
