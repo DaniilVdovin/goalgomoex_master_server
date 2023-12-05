@@ -1,8 +1,16 @@
-package ru.goalgomoex.goalgomoex.entitys.dto.auth;
+package ru.goalgomoex.goalgomoex.entitys.dto;
 
-public class UserAuthDTO {
+public class dtoUserAuth implements IDTOEntity{
     private String email;
     private String password;
+
+    public dtoUserAuth() {
+    }
+
+    public dtoUserAuth(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 
     public String getEmail() {
         return email;
