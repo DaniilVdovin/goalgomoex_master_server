@@ -8,6 +8,7 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HttpBasicConfigurer;
 import org.springframework.security.config.annotation.web.configurers.PasswordManagementConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -41,12 +42,13 @@ public class SecurityConfig {
                         .requestMatchers(
                                 antMatcher("/api/v1/auth/**"),
                                 antMatcher("/swagger-ui/**"),
-                                antMatcher("/api-docs/**")
+                                antMatcher("/api-docs/**"),
+                                antMatcher("/login"),
+                                antMatcher("/register")
                         ).permitAll()
-                        .anyRequest().denyAll()
+                        .anyRequest().permitAll()
                 )
                 .csrf(AbstractHttpConfigurer::disable)
-                .formLogin(withDefaults())
                 .userDetailsService(goUserAuthService)
                 .build();
     }

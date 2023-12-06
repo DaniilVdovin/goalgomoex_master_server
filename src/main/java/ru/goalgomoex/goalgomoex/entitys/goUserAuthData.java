@@ -22,11 +22,14 @@ public class goUserAuthData implements UserDetails, IEntity{
     private boolean enabled;
     private String roles;
 
-    public goUserAuthData(){}
+    public goUserAuthData(){
+        enabled = true;
+    }
     public goUserAuthData(String displayableUsername, String username, String password) {
         this.username = username;
         this.password = password;
         this.displayableUsername = displayableUsername;
+        enabled = true;
     }
 
 
