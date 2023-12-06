@@ -1,7 +1,9 @@
 # Исходные коды API сервиса GO.ALGO.Neuro 
-## Сервис создания и проверки торговых и инвестиционных стратегий на базе нейронных сетей
+## Сервис создания и проверки торговых и инвестиционных стратегий на базе нейронных сетей [HOW-TO-GUIDE](https://github.com/DaniilVdovin/goalgomoex_master_server/blob/8838cfc17c91ee0d21aab5ecc1572b11c8176931/how-to-guide.pdf)
 
 Мастер сервер для работы с данными полученными из [MoexAlgo](https://github.com/moexalgo/moexalgo/tree/main)
+
+
 
 [Исходные коды микросервисов пайплайна](https://github.com/powerlife000/moex_hackaton/)
 
