@@ -3,7 +3,7 @@
 
 Мастер сервер для работы с данными полученными из [MoexAlgo](https://github.com/moexalgo/moexalgo/tree/main)
 
-
+[Предсказания временных рядов](https://github.com/sergeycommit/AlgoPack_time_series)
 
 [Исходные коды микросервисов пайплайна](https://github.com/powerlife000/moex_hackaton/)
 
