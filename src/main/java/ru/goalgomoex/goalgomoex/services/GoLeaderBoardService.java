@@ -7,6 +7,7 @@ import ru.goalgomoex.goalgomoex.entitys.goScriptConfig;
 import ru.goalgomoex.goalgomoex.repository.GoConfRepository;
 import ru.goalgomoex.goalgomoex.repository.GoLeaderBoardRepository;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -16,10 +17,7 @@ public class GoLeaderBoardService {
         return goLeaderBoardRepository.findAll();
     }
     public List<goLeaderBoardItem> listByTimeframe(String timeframe){
-        return goLeaderBoardRepository.findByTimeframe(timeframe);
-    }
-    public List<goLeaderBoardItem> listForService(String timeframe){
-        return goLeaderBoardRepository.findByTimeframe(timeframe);
+        return goLeaderBoardRepository.findByTimeframe(timeframe).stream().filter(x->x.getCreate_date().getDate()==new Date().getDate()).toList();
     }
     public goLeaderBoardItem createOrUpdate(goLeaderBoardItem object){
         if(object == null) return null;
@@ -28,7 +26,12 @@ public class GoLeaderBoardService {
     }
     public List<goLeaderBoardItem> createOrUpdate(List<goLeaderBoardItem> object){
         if(object == null) return null;
-        object.forEach(goLeaderBoardItem::upVersion);
+        object.forEach(x->
+                {
+                    x.setCreate_date(new Date());
+                    x.upVersion();
+                }
+        );
         return goLeaderBoardRepository.saveAllAndFlush(object);
     }
     public goLeaderBoardItem Get(long id) {

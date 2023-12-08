@@ -6,6 +6,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import ru.goalgomoex.goalgomoex.entitys.dto.dtoLeaderBoardItem;
 
+import java.util.Date;
+
 
 @Entity
 @Table(name = "go_leaderboard_items")
@@ -19,6 +21,7 @@ public class goLeaderBoardItem implements IEntity{
     private double predict_price;
     private double predict_profit;
     private String timeframe;
+    private Date create_date;
 
     public goLeaderBoardItem() {
     }
@@ -99,5 +102,13 @@ public class goLeaderBoardItem implements IEntity{
 
     public void setTimeframe(String timeframe) {
         this.timeframe = timeframe;
+    }
+
+    public Date getCreate_date() {
+        return create_date;
+    }
+
+    public void setCreate_date(Date create_date) {
+        this.create_date = create_date;
     }
 }

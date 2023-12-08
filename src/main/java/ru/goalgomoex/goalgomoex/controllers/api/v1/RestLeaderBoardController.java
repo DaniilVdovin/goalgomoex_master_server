@@ -23,7 +23,7 @@ public class RestLeaderBoardController {
         }
         return list;
     }
-    @GetMapping("/{tf}")
+    @GetMapping("/byTimeFrame")
     public List<dtoLeaderBoardItem> getByTimeframe(@RequestParam("tf") String timeframe){
         List<dtoLeaderBoardItem> list = new ArrayList<>();
         for (goLeaderBoardItem go:

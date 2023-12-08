@@ -1,6 +1,6 @@
 package ru.goalgomoex.goalgomoex.entitys.dto.task.calcProfit;
 
-import ru.goalgomoex.goalgomoex.entitys.dto.task.dtoData;
+import ru.goalgomoex.goalgomoex.entitys.dto.dtoData;
 import ru.goalgomoex.goalgomoex.entitys.dto.task.dtoTaskOut;
 import ru.goalgomoex.goalgomoex.entitys.dto.dtoValueDV;
 
