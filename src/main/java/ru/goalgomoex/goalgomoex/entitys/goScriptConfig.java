@@ -77,7 +77,7 @@ public class goScriptConfig implements IEntity {
                 " --max_unmark " + max_unmark +
                 " --size_df " + size_df +
                 " --count_days " + count_days +
-                " --data_path '" + data_path +
+                " --data_path " + data_path +
                 " --new_model_flag " + new_model_flag +
                 " --learning_rate " + learning_rate +
                 " --epochs " + epochs +

@@ -1,14 +1,17 @@
 package ru.goalgomoex.goalgomoex.entitys;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import ru.goalgomoex.goalgomoex.core.GoTools;
 import ru.goalgomoex.goalgomoex.entitys.dto.dtoSignal;
 
 @Entity
 @Table(name = "go_signals")
 public class goSignal implements IEntity{
     @Id
+    @GeneratedValue
     private long ID;
     private String GUID;
     private int version;
@@ -22,6 +25,7 @@ public class goSignal implements IEntity{
         ticker = signal.getTicker();
         ansamble_signal = signal.getAnsamble_signal();
         ansamble_signal_position = signal.getAnsamble_signal_position();
+        GUID = GoTools.GenerateGUID();
     }
 
     public goSignal() {

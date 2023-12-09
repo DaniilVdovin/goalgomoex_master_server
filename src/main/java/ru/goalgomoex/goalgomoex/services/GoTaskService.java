@@ -64,7 +64,15 @@ public class GoTaskService {
         for (goTask task:goTaskRepository.findByStatus(0)) {
             if(task.getConfig() == null) continue;
             boolean rs = pythonStarter.Start(task.getID(),task.getConfig());
-
+            if(rs) {
+                task.setStatus(1);
+                task.setStart_time(new Date());
+            }else {
+                task.setStart_time(new Date());
+                task.setEnd_time(new Date());
+                task.setStatus(3);
+            }
+            goTaskRepository.save(task);
             break;
         }
     }
