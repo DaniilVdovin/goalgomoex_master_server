@@ -17,7 +17,12 @@ public class GoTaskService {
     @Autowired private PythonStarter pythonStarter;
     public List<goTask> taskList() {return goTaskRepository.findAll();}
     public List<goTask> taskWaitList() {return goTaskRepository.findByStatus(0);}
-    public List<goTask> taskInProgressList() {return goTaskRepository.findByStatus(1);}
+    public List<goTask> taskInProgressList() {
+        ArrayList<goTask> temp = new ArrayList<>();
+        temp.addAll(goTaskRepository.findByStatus(1));
+        temp.addAll(goTaskRepository.findByStatus(4));
+        return temp;
+    }
     public List<goTask> taskDoneList() {return goTaskRepository.findByStatus(2);}
     public List<goTask> taskDoneWithErrorList() {return goTaskRepository.findByStatus(3);}
     public goTask getTask(long id){
@@ -48,7 +53,10 @@ public class GoTaskService {
         sysTaskComplied(ID,2);
     }
     public void taskCompliedWithError(Long ID){
-        sysTaskComplied(ID,3);}
+        Optional<goTask> task = goTaskRepository.findById(ID);
+        sysTaskComplied(ID,3);
+        pythonStarter.Kill(task.get().getProcessID());
+    }
     private void sysTaskComplied(Long ID, int status){
         Optional<goTask> task = goTaskRepository.findById(ID);
         if(task.isEmpty()) return;
@@ -63,16 +71,16 @@ public class GoTaskService {
         if(goTaskRepository.findByStatus(0).isEmpty()) return;
         for (goTask task:goTaskRepository.findByStatus(0)) {
             if(task.getConfig() == null) continue;
-            boolean rs = pythonStarter.Start(task.getID(),task.getConfig());
-            if(rs) {
-                task.setStatus(1);
-                task.setStart_time(new Date());
+            Process rs = pythonStarter.Start(task.getID(),task.getConfig());
+            if(rs != null) {
+                taskInProgress(task.getID(),rs.pid());
+                if(task.getConfig().getService().equals("calc_signals.py")) task.setStatus(4);
             }else {
                 task.setStart_time(new Date());
                 task.setEnd_time(new Date());
                 task.setStatus(3);
+                createOrUpdate(task);
             }
-            goTaskRepository.save(task);
             break;
         }
     }

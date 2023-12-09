@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface GoLeaderBoardRepository extends JpaRepository<goLeaderBoardItem, Long> {
     List<goLeaderBoardItem> findByTimeframe(String timeframe);
+    List<goLeaderBoardItem> findByTicker(String ticker);
 }

@@ -8,6 +8,7 @@ import ru.goalgomoex.goalgomoex.entitys.goLeaderBoardItem;
 import ru.goalgomoex.goalgomoex.services.GoLeaderBoardService;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -32,6 +33,12 @@ public class RestLeaderBoardController {
         }
         return list;
     }
+    @DeleteMapping("/RemoveByDateAndTicker")
+    public dtoMessage remove(@RequestParam("ticker") String timeframe,@RequestParam("date") Date date){
+        goLeaderBoardService.RemoveByDateAndTicker(timeframe,date);
+        return new dtoMessage("INFO","DONE");
+    }
+
     @PostMapping
     public dtoMessage post(@RequestBody List<dtoLeaderBoardItem> itemList){
         List<goLeaderBoardItem> list = new ArrayList<>();

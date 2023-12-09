@@ -19,6 +19,11 @@ public class GoLeaderBoardService {
     public List<goLeaderBoardItem> listByTimeframe(String timeframe){
         return goLeaderBoardRepository.findByTimeframe(timeframe).stream().filter(x->x.getCreate_date().getDate()==new Date().getDate()).toList();
     }
+    public void RemoveByDateAndTicker(String ticker,Date date){
+        goLeaderBoardRepository.deleteAll(
+                goLeaderBoardRepository.findByTicker(ticker).stream().filter(x->x.getCreate_date().getDate()==date.getDate()).toList()
+        );
+    }
     public goLeaderBoardItem createOrUpdate(goLeaderBoardItem object){
         if(object == null) return null;
         object.upVersion();

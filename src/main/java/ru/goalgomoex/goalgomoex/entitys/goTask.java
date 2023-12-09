@@ -21,6 +21,7 @@ public class goTask implements IEntity{
     * 1 - В работе
     * 2 - Завершен
     * 3 - С ошибкой
+    * 4 - Постоянный
     * */
     private int status;
 
